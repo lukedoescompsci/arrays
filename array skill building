@@ -1,0 +1,91 @@
+import random
+
+
+def populateArray(array):
+  for i in range(0, 100):
+    array[i] = random.randint(1, 100)
+
+def sequentialPopulation(array):
+  for i in range(0, 100):
+    array[i] = i + 1
+
+def displayArray(array):
+  print(array)
+
+def shuffleArray(array):
+  for i in range(0, 100):
+    index = random.randint(0, 99)
+    temp = array[i]
+    array[i] = array[index]
+    array[index] = temp
+
+def find(number, array):
+  number = int(input("Enter the number you want to find: "))
+  for i in range(len(array)):
+    if array[i] == number:
+      print(i)
+
+def ascending(array):
+  ascend = True
+  for i in range(0, 99):
+    if(array[i] > array[i + 1]):
+      ascend = False
+      break
+  print(ascend)
+
+def shuffleSort(array):
+  x = 0
+  while (x < 10000):
+    a = random.randint(0, 99)
+    b = random.randint(0, 99)
+    temporary = array[a]
+    array[a] = array[b]
+    array[b] = temporary
+  ascending(array)
+
+
+def findSmallestNumber(array):
+  for i in range(0, 99):
+    if(array[i] > array[i + 1]):
+      smallest = array[i]
+  print(smallest)
+
+
+array = [0] * 100
+choice = ""
+number = 0
+
+print("Enter 1 to randomly populate array")
+print("2 to populate sequentially")
+print("3 to display array")
+print("4 to shuffle array")
+print("5 to find number")
+print("6 to find if the array is in ascending order")
+print("7 to shuffle and sort array, probably wont work")
+print("8 to find the smallest number in the array")
+print("0 to quit")
+while(choice != 0):
+  choice = input("Enter choice: ")
+
+  if choice == "1":
+    populateArray(array)
+  elif choice == "2":
+    sequentialPopulation(array)
+  elif choice == "3":
+    displayArray(array)
+  elif choice == "4":
+    shuffleArray(array)
+  elif choice == "5":
+    find(number, array)
+  elif choice == "6":
+    ascending(array)
+  elif choice == "7":
+    shuffleSort(array)
+  elif choice == "8":
+    findSmallestNumber(array)
+  elif choice == "0":
+    print("Exiting program")
+    exit()
+  else:
+    print("Invalid choice")
+    exit()
