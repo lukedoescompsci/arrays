@@ -1,0 +1,31 @@
+import random
+
+
+rows, columns = 20, 20
+array = [[0] * columns for _ in range(rows)]
+
+for x in range(rows):
+    for y in range(columns):
+        array[x][y] = random.randint(0, 100)
+
+for x in range(rows):
+    for y in range(columns):
+        print(array[x][y], end=" ")
+    print()
+
+maxSum = -1
+topLeftCoordinates = (0, 0)
+
+for x in range(rows - 2):
+    for y in range(columns - 2):
+        currentSum = 0
+        
+        for i in range(3):
+            for j in range(3):
+                currentSum += array[x + i][y + j]
+        if currentSum > maxSum:
+            maxSum = currentSum
+            topLeftCoordinates = (x, y)
+
+print(maxSum)
+print(topLeftCoordinates)
